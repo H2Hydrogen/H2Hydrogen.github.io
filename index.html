@@ -1,50 +1,141 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name=”viewport” content=”width=device-width, initial-scale=1″ />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-<meta http-equiv="Content-Language" content="zh-cn">
-
-<!-- 这是个测试页面！ -->
-<!-- ⚡規範のHTML代碼⚡ -->
-
-<!-- 虽然我最好不要把 [CEA]-甘雨(2515927413@qq.com) 的忠告当彩蛋，不过你确乎是发现了，这整个页面都是彩蛋！🌝🌞🌚 -->
-<!-- Roy_SysNotFound(3398508689@qq.com)帮助我内网穿透，感谢💦 -->
-
-<title>H2の小站</title>
-<meta name="keywords" content="H2の小站">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>H2の站</title>
+  
+  <!-- 虽然我最好不要把 [CEA]-甘雨(2515927413@qq.com) 的忠告当彩蛋，不过你确乎是发现了，这整个页面都是彩蛋！🌝🌞🌚 -->
+  <!-- Roy_SysNotFound(3398508689@qq.com)帮助我内网穿透，虽然我托管到GitHub了，感谢💦 -->
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link href="../fonts/fonts.css" rel="stylesheet">
+  <link rel="shortcut icon" href="。/image/亮.jpg" />
+  <body bgcolor="#121314">
+  <style>
+    body {
+      font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-size: calc(10px + 0.33vw);
+      -webkit-font-smoothing: antialiased;
+      padding: 5vh 10vw;
+      color: #ffffff;
+    }
+    h1 {
+      font-size: 4.5em;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+    p {
+      font-size: 1.6em;
+      font-weight: 300;
+      line-height: 1.4;
+      max-width: 26em;
+    }
+    a {
+      text-decoration: none;
+      color: #ffffff;
+      position: relative;
+    }
+    a.main:after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 60%;
+      left: -0.1em;
+      right: -0.1em;
+      bottom: 0;
+      transition: top 200ms cubic-bezier(0, .8, .13, 1);
+      background-color: rgba(255,255,255,0.5);
+    }
+    a:hover:after {
+      top: 0%;
+    }
+    a.yangshi {color:#3b8d68;text-decoration:none;}
+    a.yangshi:hover {color:#3b8d68;text-decoration:none;}
+    body2 {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    #canvas {
+      position: absolute;
+      left:0;
+      top:0;
+      bottom:0;
+      right:0;
+      margin:auto;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+    }
+    #boo {
+        position:absolute;
+        left:42%;
+        bottom:0;
+        color: #3b8d68;
+        text-align :center;
+    }
+  </style>
 </head>
-<body style="text-align: center">
+<body>
+    <h1>海内存知己，天涯若比邻。</h1>
+    <h1></h1>
+    <h2>这里是Hydrogenの小站</h2>
+    <h2>感谢您访问了我的小站，不过现在几乎什么都没有💦</h2>
+    <h1></h1>
+    <p>把你的建议发送给Hydrogen，或为小站捐赠:</p>
+    <p>LINE:geek_hydrogen</p>
+    <p>QQ:399479160</p>
+    <p>E-mail:a_yjh@outlook.com</p>
+<body2>
+<canvas id="canvas"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas');
+		var ctx = canvas.getContext('2d');
 
-<h1 align="center">海内存知己，天涯若比邻。</h1>
-<h2 align="center">这里是Hydrogenの小站</h2>
-<p align="center">感谢您访问了我的小站，不过现在几乎什么都没有💦</p>
 
-<p align="center">
+		canvas.height = window.innerHeight;
+		canvas.width = window.innerWidth;
 
-<img src="./image/亮.jpg" title="Hydrogen">
+		var texts = '~!@#$%^&*()_+{}[]:;\/.,1234567890'.split('');
 
-</p>
+		var fontSize = 16;
+		var columns = canvas.width/fontSize;
+		// 用于计算输出文字时坐标，所以长度即为列数
+		var drops = [];
+		//初始值
+		for(var x = 0; x < columns; x++){
+			drops[x] = 1;
+		}
 
-<p align="center">把你的建议发送给Hydrogen，或为小站捐赠:</p>
-<p align="center">LINE:geek_hydrogen</p>
-<p align="center">QQ:399479160</p>
-<p align="center">E-mail:a_yjh@outlook.com</p>
+		function draw(){
+			//让背景逐渐由透明到不透明
+			ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+			//文字颜色
+			ctx.fillStyle = '#4FC08D';
+			ctx.font = fontSize + 'px arial';
+			//逐行输出文字
+			for(var i = 0; i < drops.length; i++){
+				var text = texts[Math.floor(Math.random()*texts.length)];
+				ctx.fillText(text, i*fontSize, drops[i]*fontSize);
 
+				if(drops[i]*fontSize > canvas.height || Math.random() > 0.95){
+					drops[i] = 0;
+				}
 
-<a href="./sign/Sign in.htm" target="_blank",title="Sign in">Sign in</a>
+				drops[i]++;
+			}
+		}
 
-<p align="center">×××××××××××××××××××××××××××××××××××××××××</p>
-
-<p align="center">无情链接:</p>
-<p align="center">
-<a href="http://www.cqzhx.top/" target="_blank" title="某全小站">/CQZHX/</a>
-<a href="https://cea.sin159357.xyz/" target="_blank" title="中国青年计算机爱好者联盟">/CEA/</a>
-<a href="https://www.fuibafuyu.cn" target="_blank" title="冬優ちゃんの小窝">/冬優ちゃんの小窝/</a>
-<a href="sevente17.github.io" target="_blank" title="neetneves">/sevente17/</a>
-</p>
-<p align="center">艹艹艹艹</p>
-
+		setInterval(draw, 33);
+	</script>
+</body2>
 </body>
+<div id="boo" >
+    <a href="./sign/Sign in.htm" target="_top" class="main">_______________________注册_______________________</a>
+    <p></p>
+</div>
 </html>
