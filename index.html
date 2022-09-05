@@ -74,17 +74,17 @@
 <body>
     <h1>海内存知己，天涯若比邻。</h1>
     <h1></h1>
-    <h2>这里是Hydrogenの小站</h2>
-    <h2>感谢您访问了我的小站，不过现在几乎什么都没有💦</h2>
+    <h2>Here is the Hydrogenogen の website</h2>
+    <h2>Thank you for visiting my little station, but now there is almost nothing💦</h2>
     <h1></h1>
     <h2><a href="./job" target="_top" class="main">开始工作</a></h2>
     <h1></h1>
     <h1></h1>
     <h1></h1>
-    <p>把你的建议发送给Hydrogen，或为小站捐赠：</p>
-    <p>LINE:账号停用</p>
+    <p>Send your proposal to Hydrogen, or donate to the station:</p>
+    <p>LINE:Account deactivation</p>
     <p>QQ:399479160</p>
-    <p>E-mail:a_yjh@outlook.com</p> 
+    <p>E-mail:Hydrogen_H2@outlook.com</p> 
 <body2>
 <canvas id="cas"></canvas>
 <script>
@@ -105,7 +105,6 @@
         };
   })();
 
-  // 鼠标活动时，获取鼠标坐标
   var warea = {x: null, y: null, max: 20000};
   window.onmousemove = function(e) {
     e = e || window.event;
@@ -118,8 +117,6 @@
     warea.y = null;
   };
 
-  // 添加粒子
-  // x，y为粒子坐标，xa, ya为粒子xy轴加速度，max为连线的最大距离
   var dots = [];
   for (var i = 0; i < 300; i++) {
     var x = Math.random() * canvas.width;
@@ -136,59 +133,42 @@
     })
   }
 
-  // 延迟100秒开始执行动画，如果立即执行有时位置计算会出错
   setTimeout(function() {
     animate();
   }, 100);
 
-  // 每一帧循环的逻辑
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // 将鼠标坐标添加进去，产生一个用于比对距离的点数组
     var ndots = [warea].concat(dots);
 
     dots.forEach(function(dot) {
 
-      // 粒子位移
       dot.x += dot.xa;
       dot.y += dot.ya;
 
-      // 遇到边界将加速度反向
       dot.xa *= (dot.x > canvas.width || dot.x < 0) ? -1 : 1;
       dot.ya *= (dot.y > canvas.height || dot.y < 0) ? -1 : 1;
 
-      // 绘制点
       ctx.fillRect(dot.x - 0.5, dot.y - 0.5, 1, 1);
 
-      // 循环比对粒子间的距离
       for (var i = 0; i < ndots.length; i++) {
         var d2 = ndots[i];
 
         if (dot === d2 || d2.x === null || d2.y === null) continue;
-
         var xc = dot.x - d2.x;
         var yc = dot.y - d2.y;
-
-        // 两个粒子之间的距离
         var dis = xc * xc + yc * yc;
-
-        // 距离比
         var ratio;
-
-        // 如果两个粒子之间的距离小于粒子对象的max值，则在两个粒子间画线
         if (dis < d2.max) {
-
-          // 如果是鼠标，则让粒子向鼠标的位置移动
+        
           if (d2 === warea && dis > (d2.max / 2)) {
             dot.x -= xc * 0.03;
             dot.y -= yc * 0.03;
           }
 
-          // 计算距离比
           ratio = (d2.max - dis) / d2.max;
 
-          // 画线
           ctx.beginPath();
           ctx.lineWidth = ratio / 2;
           ctx.strokeStyle = 'rgba(79,192,141,' + (ratio + 0.2) + ')';
@@ -197,8 +177,7 @@
           ctx.stroke();
         }
       }
-
-      // 将已经计算过的粒子从数组中删除
+      
       ndots.splice(ndots.indexOf(dot), 1);
     });
 
