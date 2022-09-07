@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>文本随机显示</title>
+</head>
+<body>
+    <script language="JavaScript">
+        var a = Math.random() + ""
+        var rand1 = a.charAt(5)
+        quotes = new Array
+        quotes[1] = '文本内容1'
+        quotes[2] = '文本内容2'
+        quotes[3] = '文本内容3'
+        quotes[4] = '文本内容4'
+        quotes[5] = '文本内容5'
+        quotes[6] = '文本内容6'
+        quotes[7] = '文本内容7'
+        quotes[8] = '文本内容8'
+        quotes[9] = '文本内容9'
+        quotes[0] = '文本内容10'
+        var quote = quotes[rand1]
+    </script>
+    <h1>
+        <script language="JavaScript">
+            document.write(quote)
+        </script>
+    </h1>
+</body>
+</html>
