@@ -6,6 +6,7 @@
 </head>
 
 <body>
+<font face="UD Digi Kyokasho NP-B">
 
   <h1 align="center"><u><i><font size="7">好像是...404!</font></i></u></h1>
 <h1 align="center"><u><font size="6">才，才不是没有文件呢！（害怕</font></u></h1>
@@ -16,6 +17,20 @@
 </h1>
 	<p align="center">
 &nbsp;</p>
+<h2 align="center">
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script></p>
+<link rel="icon" href="logo.ico" />
+<div id="poem_sentence"></div>
+<div id="poem_info"></div>
+<script type="text/javascript">
+  jinrishici.load(function(result) {
+    var sentence = document.querySelector("#poem_sentence")
+    var info = document.querySelector("#poem_info")
+    sentence.innerHTML = result.data.content
+    info.innerHTML = '【' + result.data.origin.dynasty + '】' + result.data.origin.author + '《' + result.data.origin.title + '》'
+  });
+</script>
+</h2>
 	<p align="center">
 &nbsp;</p>
 	<p align="center">
@@ -23,5 +38,7 @@
 	<p align="center">
 <a href="../index.html" title="">回到首页</a>
 </p>
+</font>
 </body>
+
 </html>
